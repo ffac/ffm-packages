@@ -17,11 +17,12 @@ o = s:option(ListValue, "wifi", "Wifi ON/OFF Taster")
 o.default = fct
 o.widget = "radio"
 o.rmempty = false
-o:value('0', "Wifi an/aus (default)")
-o:value('1', "Funktionslos")
+o:value('0', "Wifi an/aus")
+o:value('1', "Funktionslos (default)")
 o:value('2', "Wifi-Reset")
-o:value('3', "alle Status-LEDs an/aus (Nachtmodus)")
-o:value('4', "Client-Netz an/aus")
+o:value('3', "alle Status-LEDs an/aus (Nachtmodus 1)")
+o:value('4', "LEDs aus, an beim Drücken (Nachtmodus 2)")
+o:value('5', "Client-Netz an/aus")
 
 function f.handle(self, state, data)
 	if state == FORM_VALID then
