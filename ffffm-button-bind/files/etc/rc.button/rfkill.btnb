@@ -10,7 +10,7 @@ if [ "$ACTION" = "pressed" ]; then
 	/sbin/wifi
 fi
 ;;
-3) # LEDs on/off
+3) # LEDs ON/OFF
 if [ "$ACTION" = "pressed" ]; then
 	LED_STATE=/tmp/wifi-button-status
 	if [ ! -f $LED_STATE ]; then echo 1>$LED_STATE; fi
@@ -26,7 +26,17 @@ if [ "$ACTION" = "pressed" ]; then
 	fi
 fi
 ;;
-4) # Client on/off
+4) # LEDs OFF, ON only on hold
+if [ "$ACTION" = "pressed" ]; then
+	/etc/init.d/led start
+else
+	for i in /sys/class/leds/*; do
+		echo 0 > "$i"/brightness
+	done
+	/etc/init.d/led stop
+fi
+;;
+5) # Client ON/OFF
 if [ "$ACTION" = "pressed" ]; then
 	DISABLED=$(uci get wireless.client_radio0.disabled)
 	if [ "$DISABLED" = "0" ]; then
@@ -38,7 +48,7 @@ if [ "$ACTION" = "pressed" ]; then
 	wifi
 fi
 ;;
-*) # Default, WLAN on/off
+*) # Default, WLAN ON/OFF
 /etc/rc.button/rfkill.owrt 
 ;;
 esac
