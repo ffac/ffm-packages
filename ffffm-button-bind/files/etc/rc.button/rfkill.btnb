@@ -48,7 +48,18 @@ if [ "$ACTION" = "pressed" ]; then
 	wifi
 fi
 ;;
-*) # Default, WLAN ON/OFF
+6) # mesh-VPN OFF
+if [ "$ACTION" = "pressed" ]; then
+	pid="$(pgrep -f mesh-vpn-pause.sh|xargs)"
+	if [ "$pid" == "" ]; then
+		/lib/gluon/button-bind/mesh-vpn-pause.sh &
+	else
+		kill -HUP "$pid"
+		/etc/init.d/fastd stop && /etc/init.d/fastd start
+	fi
+fi
+;;
+*) # 0) Default, WLAN ON/OFF
 /etc/rc.button/rfkill.owrt 
 ;;
 esac

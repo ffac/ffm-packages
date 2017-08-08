@@ -23,6 +23,7 @@ o:value('2', "Wifi-Reset")
 o:value('3', "alle Status-LEDs an/aus (Nachtmodus 1)")
 o:value('4', "LEDs aus, an beim Drücken (Nachtmodus 2)")
 o:value('5', "Client-Netz an/aus")
+o:value('6', "Mesh-VPN aus für 5 Stunden")
 
 function f.handle(self, state, data)
 	if state == FORM_VALID then

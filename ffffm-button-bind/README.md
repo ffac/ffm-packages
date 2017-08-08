@@ -16,6 +16,7 @@ Es stehen folgende Tasterfunktionalitäten zur Verfügung:
 3. alle Status-LEDs an/aus (`uci set button-bind.wifi.function=3; uci commit; reboot`)
 4. alle Status-LEDs aus, an solange man den Taster gedrückt hält (`uci set button-bind.wifi.function=4; uci commit; reboot`)
 5. Client-Netz an/aus (`uci set button-bind.wifi.function=5; uci commit`)
+6. Mesh-VPN aus für 5 Stunden (`uci set button-bind.wifi.function=6; uci commit`)
 
 **Hinweis für uci Nutzung**
 
