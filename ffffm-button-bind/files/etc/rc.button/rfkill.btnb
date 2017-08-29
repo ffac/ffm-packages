@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BIND=$(uci get button-bind.wifi.function)
+BIND=$(uci -q get button-bind.wifi.function)
 
 case "$BIND" in
 1) # no function
@@ -13,7 +13,7 @@ fi
 3) # LEDs ON/OFF
 if [ "$ACTION" = "pressed" ]; then
 	LED_STATE=/tmp/wifi-button-status
-	if [ ! -f $LED_STATE ]; then echo 1>$LED_STATE; fi
+	if [ ! -f $LED_STATE ]; then echo 0>$LED_STATE; fi
 	if [ "$(cat $LED_STATE)" = "0" ]; then
 		/etc/init.d/led start
 		echo "1">$LED_STATE
@@ -38,7 +38,7 @@ fi
 ;;
 5) # Client ON/OFF
 if [ "$ACTION" = "pressed" ]; then
-	DISABLED=$(uci get wireless.client_radio0.disabled)
+	DISABLED=$(uci -q get wireless.client_radio0.disabled)
 	if [ "$DISABLED" = "0" ]; then
 		uci set wireless.client_radio0.disabled=1
 	else
