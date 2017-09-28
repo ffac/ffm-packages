@@ -1,1 +1,0 @@
-0 */2 * * * if ! [ $(pgrep autoupdater) ] ; then if ! [ $(pgrep respondd) ]; then /etc/init.d/gluon-respondd restart ;fi; fi

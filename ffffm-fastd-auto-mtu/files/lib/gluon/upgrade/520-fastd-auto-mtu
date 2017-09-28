@@ -1,9 +1,0 @@
-#!/usr/bin/lua
-
-local site = require 'gluon.site_config'
-local uci = require('luci.model.uci').cursor()
-local lutil = require 'luci.util'
-
-uci:set('fastd', 'mesh_vpn', 'mtu', site.fastd_mesh_vpn.mtu)
-uci:set('fastd', 'mesh_vpn', 'auto_mtu_enabled','1')
-uci:save('fastd')
