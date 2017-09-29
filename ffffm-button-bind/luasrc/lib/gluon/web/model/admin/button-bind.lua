@@ -22,7 +22,7 @@ o:value('4', "LEDs aus, an beim Drücken (Nachtmodus 2)")
 o:value('5', "Client-Netz an/aus")
 o:value('6', "Mesh-VPN aus für 5 Stunden")
 
-function f:write(data)
+function o:write(data)
 	uci:set('button-bind', 'wifi', 'function', data)
 end
 
