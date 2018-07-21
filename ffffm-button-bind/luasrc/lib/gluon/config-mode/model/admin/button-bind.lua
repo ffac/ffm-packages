@@ -16,7 +16,7 @@ o:value('0', "Wifi an/aus")
 o:value('1', "Funktionslos (default)")
 o:value('2', "Wifi-Reset")
 o:value('3', "Nachtmodus 1: alle Status-LEDs an/aus")
-o:value('4', "Nachtmodus 2: LEDs aus, an beim Drücken")
+o:value('4', "Nachtmodus 2: LEDs aus, aber während Taster-Betätigung an")
 o:value('5', "Client-Netz an/aus")
 o:value('6', "Mesh-VPN aus für 5 Stunden")
 
