@@ -4,14 +4,14 @@ Mit diesem Package können im Router-Konfigurationsmodus dem Router-Wifi-Taster 
 
 ![](https://user-images.githubusercontent.com/1591563/29782999-057eb41a-8c1f-11e7-969f-31ce6af40911.png)
 
-Das Package passt den Wifi-Taster über das Skript `/etc/rc.button/rfkill` an.
+Das Paket passt den Wifi-Taster über das Skript `/etc/rc.button/rfkill` an.
 
 Es stehen folgende Tasterfunktionalitäten zur Verfügung:
 
 **Wifi ON/OFF Taster:**
 
 0. Wifi an/aus (`uci set button-bind.wifi.function=0; uci commit`) 
-1. Keine Funktion (default) (`uci set button-bind.wifi.function=1; uci commit`)
+1. Keine Funktion **(default)** (`uci set button-bind.wifi.function=1; uci commit`)
 2. Wifi-Reset (`uci set button-bind.wifi.function=2; uci commit`) 
 3. Nachtmodus 1, alle Status-LEDs an/aus (`uci set button-bind.wifi.function=3; uci commit; reboot`)
 4. Nachtmodus 2, alle Status-LEDs aus, an solange man den Taster gedrückt hält (`uci set button-bind.wifi.function=4; uci commit; reboot`)
@@ -25,12 +25,12 @@ Bei Option 6. schaltet sich das Mesh-VPN nach 5 Stunden automatisch wieder ein.
 Man kann durch nochmaliges Drücken diesen Timer abbrechen und das das Mesh-VPN
 sofort wieder einschalten.
 
-**Hinweis für uci Nutzung**
+**Hinweis zur uci-Nutzung**
 
-Bei älteren Versionen dieses Package wurde nicht immer die Datei `/etc/config/button-bind` angelegt.
+Bei älteren Versionen dieses Pakets wurde nicht immer die Datei `/etc/config/button-bind` angelegt.
 
 Wenn dieses der Fall sein sollte, dann einfach folgenden Inhalt auf dem Router in die leere Datei `/etc/config/button-bind` einfügen: 
 ```
 config button 'wifi'  
-	option function '0'
+	option function '1'
 ```
