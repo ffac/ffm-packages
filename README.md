@@ -5,4 +5,4 @@
 This repository holds one packages from freifunk frankfurt that are meant to be
 used with the gluon firmware in Freifunk Nord and Kiel:
 
-- ffffm-button-bind
+- ffffm-button-bind, see [`ffffm-button-bind/README.md`](ffffm-button-bind/README.md)
