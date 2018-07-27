@@ -12,4 +12,20 @@ define Package/$(PKG_NAME)
   DEPENDS:=+gluon-web-admin
 endef
 
+define ShellSrcDiet
+	rm -rf $(2)
+	$(CP) $(1) $(2)
+	$(FIND) $(2) -type f | while read src; do \
+		$(PKG_BUILD_DIR)/gluonShellDiet.sh "$$$$src" > "$$$$src.o"; \
+		chmod $$$$(stat -c%a "$$$$src") "$$$$src.o"; \
+			mv "$$$$src.o" "$$$$src"; \
+	done
+endef
+
+define Build/Compile
+	$(call Gluon/Build/Compile)
+	$(call ShellSrcDiet,shsrc,$(PKG_BUILD_DIR)/shdest/)
+	$(CP) $(PKG_BUILD_DIR)/shdest/. $(1)/
+endef
+
 $(eval $(call BuildPackageGluon,$(PKG_NAME)))
