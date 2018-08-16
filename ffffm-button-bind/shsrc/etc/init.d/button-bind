@@ -1,5 +1,7 @@
 #!/bin/sh /etc/rc.common
 
+# if the seting is to nigthmode, on each start of the node the leds are turned OFF
+
 FUNCTION=$(uci get button-bind.wifi.function)
 if [ "${FUNCTION}" = 3 ]
 then
