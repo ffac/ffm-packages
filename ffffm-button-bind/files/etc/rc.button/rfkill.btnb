@@ -10,14 +10,17 @@ ledoff() {
 }
 
 case "$BIND" in
-1) # no function
+1)
+# no function
 ;;
-2) # WLAN Reset 
+2)
+# WLAN Reset 
 if [ "$ACTION" = "pressed" ]; then
 	/sbin/wifi
 fi
 ;;
-3) # LEDs ON/OFF
+3)
+# LEDs ON/OFF
 if [ "$ACTION" = "pressed" ]; then
 	LED_STATE=/tmp/wifi-button-status
 	if [ ! -f $LED_STATE ]; then echo 0>$LED_STATE; fi
@@ -30,14 +33,16 @@ if [ "$ACTION" = "pressed" ]; then
 	fi
 fi
 ;;
-4) # LEDs OFF, ON only on hold
+4)
+# LEDs OFF, ON only on hold
 if [ "$ACTION" = "pressed" ]; then
 	/etc/init.d/led start
 else
 	ledoff
 fi
 ;;
-5) # Client ON/OFF
+5)
+# Client ON/OFF
 if [ "$ACTION" = "pressed" ]; then
 	DISABLED=$(uci -q get wireless.client_radio0.disabled)
 	if [ "$DISABLED" = "0" ]; then
@@ -49,7 +54,8 @@ if [ "$ACTION" = "pressed" ]; then
 	wifi
 fi
 ;;
-6) # mesh-VPN OFF
+6)
+# mesh-VPN OFF
 if [ "$ACTION" = "pressed" ]; then
 	pid="$(pgrep -f mesh-vpn-pause.sh|xargs)"
 	if [ "$pid" == "" ]; then
@@ -60,7 +66,8 @@ if [ "$ACTION" = "pressed" ]; then
 	fi
 fi
 ;;
-*) # 0) Default, WLAN ON/OFF
+*)
+# 0) Default, WLAN ON/OFF
 /etc/rc.button/rfkill.owrt 
 ;;
 esac

@@ -1,5 +1,8 @@
 #!/bin/sh /etc/rc.common
+#!/
+# if set to nigthmode, the leds are turned OFF on each start of the node
 
+# This is called at the 97th place
 START=97
 
 start() {
