@@ -14,8 +14,10 @@ case "$BIND" in
 # no function
 ;;
 2)
-# WLAN Reset 
+# WLAN reset and force batman-adv to re-elect the gateway
 if [ "$ACTION" = "pressed" ]; then
+	batctl gw off
+	batctl gw client 1
 	/sbin/wifi
 fi
 ;;
